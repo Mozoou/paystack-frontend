@@ -7,8 +7,30 @@ const PaymentForm = () => {
     const [amount] = useState(15);
     const [status, setStatus] = useState(null);
 
+    const validateEmail = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const validateDomain = (domain) => {
+        const domainRegex = /^(?!:\/\/)([a-zA-Z0-9-_]+\.)+[a-zA-Z]{2,11}?$/;
+        return domainRegex.test(domain);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!validateEmail(email)) {
+            setStatus('Invalid email address');
+            return;
+        }
+
+        if (!validateDomain(domain)) {
+            setStatus('Invalid domain name');
+            return;
+        }
+
+        setStatus('');
         try {
             const response = await axios.post('https://nameless-reef-15409-45cc60f1c5ef.herokuapp.com/api/pay', { email, domain, amount });
             window.location.href = response.data.authorization_url.url;
