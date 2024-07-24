@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styles/payment_form.css';
 
 const PaymentForm = () => {
     const [email, setEmail] = useState('');

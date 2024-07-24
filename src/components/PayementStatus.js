@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import '../styles/payment_status.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const PaymentStatus = () => {
   const location = useLocation();
   const [status, setStatus] = useState(null);
   const [reference, setReference] = useState(null);
+  const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate("/");
+    }
+
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -27,6 +32,7 @@ const PaymentStatus = () => {
         </div>
       )}
       
+      <button className="button" onClick={handleClick} type="button">Return to home</button>
     </div>
   );
 };
