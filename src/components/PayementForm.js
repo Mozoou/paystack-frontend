@@ -5,7 +5,7 @@ import '../styles/payment_form.css';
 const PaymentForm = () => {
     const [email, setEmail] = useState('');
     const [domain, setDomain] = useState('');
-    const [amount, setAmount] = useState(15);
+    const [amount] = useState(15);
     const [status, setStatus] = useState(null);
 
     const handleSubmit = async (e) => {
