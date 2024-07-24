@@ -11,7 +11,7 @@ const PaymentForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://04bd-41-42-189-154.ngrok-free.app/api/pay', { email, domain, amount });
+            const response = await axios.post('https://nameless-reef-15409-45cc60f1c5ef.herokuapp.com/api/pay', { email, domain, amount });
             window.location.href = response.data.authorization_url.url;
         } catch (error) {
             console.error('Payment initialization error:', error);
